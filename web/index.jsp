@@ -19,22 +19,19 @@
         <h1>Server Web Sar!</h1>
 
         <%
-            ArrayList<String> a_victima = new ArrayList<String>();
+                ArrayList<String> a_victima = new ArrayList<String>();
 
-            lanzarSocket socket = new lanzarSocket();
+                lanzarSocket socket = new lanzarSocket();
 
-            a_victima = socket.startSocket();
+                a_victima = socket.startSocket();
+                
+                Victima victima = new Victima(a_victima);
 
-            if (!a_victima.get(1).equals("")) {
-                int i = 0;
-                while (a_victima.size() > i) {
-                    out.println("<h3> " + a_victima.get(i) + "</h3>");
-                    System.out.println("estoy aca");
-                    i++;
-                }
+                out.println("<h3> " + victima.getS_edad() + "</h3>");
+                out.println("<h3> " + victima.getS_ojos() + "</h3>");
+                System.out.println("estoy aca");
 
-            }
-
+           
 
         %>
 

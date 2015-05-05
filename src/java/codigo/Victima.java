@@ -13,25 +13,32 @@ import java.util.ArrayList;
  */
 public class Victima {
 
+    public Victima() {
+    }
+    
+    public Victima(ArrayList<String> a_victima) {
+    }
+    
+    
+    
+
+    
     public String getS_edad() {
         return s_edad;
+    }
+
+    public String getS_ojos() {
+        return s_ojos;
+    }
+
+    public void setS_ojos(String s_ojos) {
+        this.s_ojos = s_ojos;
     }
 
     public void setS_edad(String s_edad) {
         this.s_edad = s_edad;
     }
 
-    public String s_edad = "";
-
-    public void datosVictima(Object oVictima) {
-
-        ArrayList<String> aVictima = new ArrayList<String>();
-
-        aVictima = ((ArrayList<String>) oVictima);
-
-        s_edad = aVictima.get(1);
-        System.out.println("victima " + aVictima.get(1));
-
-    }
-
+    private String s_edad = "";
+    private String s_ojos = "";
 }
