@@ -19,10 +19,9 @@ import java.util.ArrayList;
 public class lanzarSocket {
 
     public ArrayList<String> a_victima = null;
-    
+
     public ArrayList<String> startSocket() {
         final int PUERTO = 6004;
-        
 
         ServerSocket socketServer;
         Socket socket;
@@ -35,41 +34,39 @@ public class lanzarSocket {
         try {
             socketServer = new ServerSocket(PUERTO);/* crea socketServer servidor que escuchara en puerto 6004*/
 
-            socket = new Socket();
-            System.out.println("Esperando una conexión:");
-            socket = socketServer.accept();
-            System.out.println("ip_" + socket.getLocalAddress().toString());
+            while (true) {
+                socket = new Socket();
+                System.out.println("Esperando una conexión:");
+                socket = socketServer.accept();
+                System.out.println("ip_" + socket.getLocalAddress().toString());
 
 //Inicia el socketServer, ahora esta esperando una conexión por parte del cliente
-            System.out.println("Un cliente se ha conectado.");
+                System.out.println("Un cliente se ha conectado.");
 
 //Canales de entrada y salida de datos
-            //entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            entrada = new ObjectInputStream(socket.getInputStream());
-            salida = new DataOutputStream(socket.getOutputStream());
-            System.out.println("Confirmando conexion al cliente....");
-            salida.writeUTF("Conexión exitosa envia un mensaje :D");
+                //entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                entrada = new ObjectInputStream(socket.getInputStream());
+                salida = new DataOutputStream(socket.getOutputStream());
+                System.out.println("Confirmando conexion al cliente....");
+                salida.writeUTF("Conexión exitosa envia un mensaje :D");
 
-            
-            a_victima = new ArrayList<String>();
-            a_victima = (ArrayList<String>) entrada.readObject();
-                    
+                a_victima = new ArrayList<String>();
+                a_victima = (ArrayList<String>) entrada.readObject();
+
 //Recepcion de mensaje
-            //mensajeRecibido = entrada.readLine();
+                //mensajeRecibido = entrada.readLine();
+                //System.out.println(mensajeRecibido);
+                salida.writeUTF("Se recibio tu mensaje.");
 
-            //System.out.println(mensajeRecibido);
-            salida.writeUTF("Se recibio tu mensaje.");
+                socketServer.close();//Aqui se cierra la conexión con el cliente
+                salida.writeUTF("Terminando conexion...");
+            }
 
-            socketServer.close();//Aqui se cierra la conexión con el cliente
-            salida.writeUTF("Terminando conexion...");
-            
-            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
         return a_victima;
-        
-       
+
     }
 
 }

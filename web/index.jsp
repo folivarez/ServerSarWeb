@@ -7,7 +7,6 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="codigo.lanzarSocket"%>
-<%@page import="codigo.Victima"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,17 +18,18 @@
         <h1>Server Web Sar!</h1>
 
         <%
+            
             ArrayList<String> a_victima = new ArrayList<String>();
 
             lanzarSocket socket = new lanzarSocket();
-
+            
             a_victima = socket.startSocket();
 
             if (!a_victima.get(1).equals("")) {
                 int i = 0;
                 while (a_victima.size() > i) {
                     out.println("<h3> " + a_victima.get(i) + "</h3>");
-                    System.out.println("estoy aca");
+                    System.out.println(a_victima.get(i));
                     i++;
                 }
 
