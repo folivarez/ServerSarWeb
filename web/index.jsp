@@ -24,6 +24,7 @@
             lanzarSocket socket = new lanzarSocket();
             
             a_victima = socket.startSocket();
+            out.println("<h3> Lanzo socket </h3>");
 
             if (!a_victima.get(1).equals("")) {
                 int i = 0;
@@ -33,6 +34,9 @@
                     i++;
                 }
 
+                out.println("<h3> edad " + victima.getS_edad() + "</h3>");
+                out.println("<h3> ojos " + victima.getS_ojos() + "</h3>");
+                System.out.println("estoy aca");
             }
   
 
